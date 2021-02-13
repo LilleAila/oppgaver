@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgaver</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="hamburger">
+            <button class="menu"
+                onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"
+                aria-label="Main Menu">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                    <path class="line line1"
+                        d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="line line2" d="M 20,50 H 80" />
+                    <path class="line line3"
+                        d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="meny">
+            <div class="menyInner">
+                <div class="velgTall velg">
+                    <span class="velgetxtTall velgtxt resizable">Tall</span>
+                    <span class="valgtTall valgt resizable">0 - 10</span>
+                    <span class="velgeTall velge resizable">0 - 100</span>
+                    <span class="velgeTall velge resizable">0 - 1000</span>
+                    <span class="velgeTall velge resizable">0 - 10000</span>
+                </div>
+
+                <div class="velgRegneart velg">
+                    <span class="velgetxtRegneart velgtxt resizable">Regneart</span>
+                    <span class="valgtRegneart valgt resizable">+</span>
+                    <span class="velgeRegneart velge resizable">-</span>
+                    <span class="velgeRegneart velge resizable">×</span>
+                    <span class="velgeRegneart velge resizable">/</span>
+                </div>
+
+                <div class="velgRegneart"></div>
+            </div>
+        </div>
+
+        <div class="oppgave">
+            <div class="inputs">
+                <div class="input">
+                    <form onsubmit="return false" class="inputform">
+                        <input type="number" class="numberInput" id="number" readonly>
+                        <input type="submit" value="Svar" class="svar">
+                    </form>
+                </div>
+                <div class="numbers">
+                    <div class="numberGroup">
+                        <div class="numberOne number resizable" number="1">1</div>
+                        <div class="numberTwo number resizable" number="2">2</div>
+                        <div class="numberThree number resizable" number="3">3</div>
+                    </div>
+                    <div class="numberGroup">
+                        <div class="numberFour number resizable" number="4">4</div>
+                        <div class="numberFive number resizable" number="5">5</div>
+                        <div class="numberSix number resizable" number="6">6</div>
+                    </div>
+                    <div class="numberGroup">
+                        <div class="numberSeven number resizable" number="7">7</div>
+                        <div class="numberEight number resizable" number="8">8</div>
+                        <div class="numberNine number resizable" number="9">9</div>
+                    </div>
+                    <div class="numberGroup">
+                        <div class="number resizable" style="opacity: 0; pointer-events: none;"></div>
+                        <div class="numberZero number resizable" number="0">0</div>
+                        <div class="back resizableIcons"><img src="./assets/backspace.png" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="oppgavetitle">
+                <h1 class="resizable">1+1</h1>
+            </div>
+        </div>
+
+        <div class="flowers">
+            <div class="flowersdiv">
+                <img src="assets/flower1.png">
+                <img src="assets/flower1.png">
+                <img src="assets/flower1.png">
+                <img src="assets/flower2.png">
+                <img src="assets/flower2.png">
+                <img src="assets/flower2.png">
+                <img src="assets/flower3.png">
+                <img src="assets/flower3.png">
+                <img src="assets/flower3.png">
+                <img src="assets/flower4.png">
+                <img src="assets/flower4.png">
+                <img src="assets/flower4.png">
+                <img src="assets/flower5.png">
+                <img src="assets/flower5.png">
+                <img src="assets/flower5.png">
+                <img src="assets/flower6.png">
+                <img src="assets/flower6.png">
+                <img src="assets/flower6.png">
+                <img src="assets/flower7.png">
+                <img src="assets/flower7.png">
+                <img src="assets/flower7.png">
+                <img src="assets/flower8.png">
+                <img src="assets/flower8.png">
+                <img src="assets/flower8.png">
+                <img src="assets/flower9.png">
+                <img src="assets/flower9.png">
+                <img src="assets/flower9.png">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
