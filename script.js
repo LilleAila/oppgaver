@@ -58,19 +58,6 @@ $(function () {
   vminmax();
   numberPlace();
   resizeText();
-  if (localStorage.getItem("oppgaver") == true) {
-    getLocalStorageSettings();
-  }
-});
-
-$(".number").click(function () {
-  if ($(this).attr("number") !== "0") {
-    $(".numberInput").val($(".numberInput").val() + $(this).attr("number"));
-  } else {
-    if ($(".numberInput").val().length > 0) {
-      $(".numberInput").val($(".numberInput").val() + $(this).attr("number"));
-    }
-  }
 });
 
 $(".back").click(function () {
@@ -79,4 +66,164 @@ $(".back").click(function () {
 
 $(".hamburger").click(function () {
   $(".meny").toggleClass("visible");
+});
+
+$(document).on("keypress", function (e) {
+  //console.log(e.which);
+  switch (e.which) {
+    case 49:
+      //console.log(1);
+      $(".numberOne").click();
+      break;
+    case 50:
+      //console.log(2);
+      $(".numberTwo").click();
+      break;
+    case 51:
+      //console.log(3);
+      $(".numberThree").click();
+      break;
+    case 52:
+      //console.log(4);
+      $(".numberFour").click();
+      break;
+    case 53:
+      //console.log(5);
+      $(".numberFive").click();
+      break;
+    case 54:
+      //console.log(6);
+      $(".numberSix").click();
+      break;
+    case 55:
+      //console.log(7);
+      $(".numberSeven").click();
+      break;
+    case 56:
+      //console.log(8);
+      $(".numberEight").click();
+      break;
+    case 57:
+      //console.log(9);
+      $(".numberNine").click();
+      break;
+    case 48:
+      //console.log(0);
+      $(".numberZero").click();
+      break;
+    default:
+      break;
+  }
+});
+
+document.onkeydown = function (event) {
+  var key = event.keyCode || event.charCode;
+  if (key == 8) {
+    $(".back").click();
+  }
+};
+
+var correctAnswer = 2,
+  regneart = "+",
+  tall = 5,
+  score = 0;
+
+$(".number").click(function () {
+  $(".numberInput").val($(".numberInput").val() + $(this).attr("number"));
+
+  let answer = $(".numberInput").val();
+  // console.log(answer);
+  if (answer.toString().length > 0) {
+    if (answer == correctAnswer) {
+      score++;
+      // console.log("Riktig");
+      $(".flowersdiv").append(`<img src="assets/flower${Math.floor(Math.random() * 9) + 1}.png" />`);
+      generateNumbers();
+      document.querySelector(".numberInput").value = "";
+      $(".score").text(score + " Poeng");
+      resizeText();
+
+      $(".oppgavetitle").append(`<img src="assets/star.png" class="star">`);
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+});
+
+$(".regneart").click(function () {
+  $(".valgt.regneart").removeClass("valgt").addClass("velge");
+  $(this).addClass("valgt").removeClass("velge");
+  regneart = this.innerText;
+  // localStorage.setItem("regneart", regneart);
+  // localStorage.setItem("regnearten", "true");
+  generateNumbers();
+  $(".star").remove();
+});
+
+$(".tall").click(function () {
+  $(".valgt.tall").removeClass("valgt").addClass("velge");
+  $(this).addClass("valgt").removeClass("velge");
+  tall = eval(this.innerText.slice(4));
+  // localStorage.setItem("tall", this.innerText.slice(4));
+  // localStorage.setItem("tallet", "true");
+  generateNumbers();
+  $(".star").remove();
+});
+
+function generateNumbers() {
+  let str = "";
+  let num = 2;
+  let num1 = Math.floor(Math.random() * tall) + 1;
+  let num2 = Math.floor(Math.random() * tall) + 1;
+
+  if (regneart == "-") {
+    if (num1 >= num2) {
+      str = "" + num1 + " - " + num2;
+      num = num1 - num2;
+    } else {
+      str = "" + num2 + " - " + num1;
+      num = num2 - num1;
+    }
+  } else if (regneart == "×") {
+    str = "" + num1 + " × " + num2;
+    num = num1 * num2;
+  } else if (regneart == ":") {
+    while (num1 % num2 > 0) {
+      num2 = Math.floor(Math.random() * tall) + 1;
+    }
+    str = "" + num1 + " : " + num2;
+    num = num1 / num2;
+  } else {
+    str = "" + num1 + " + " + num2;
+    num = num1 + num2;
+  }
+
+  correctAnswer = num;
+  $(".oppgavetitle h1").text(str);
+
+  resizeText();
+}
+
+$(window).resize(function () {
+  vminmax();
+  numberPlace();
+  resizeText();
+});
+
+$(function () {
+  // if (localStorage.getItem("regnearten") == "true") {
+  //   regneart = localStorage.getItem("regneart");
+  // }
+  // if (localStorage.getItem("tallet") == "true") {
+  //   tall = eval(localStorage.getItem("regneart"));
+  // }
+
+  console.log(tall);
+  console.log(regneart);
+  generateNumbers();
+  vminmax();
+  numberPlace();
+  resizeText();
 });
