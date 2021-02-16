@@ -144,6 +144,9 @@ $(".number").click(function () {
       resizeText();
 
       $(".oppgavetitle").append(`<img src="assets/star.png" class="star">`);
+
+      var audio = new Audio('assets/star.mp3');
+      audio.play();
     } else {
       return;
     }
@@ -159,7 +162,7 @@ $(".regneart").click(function () {
   // localStorage.setItem("regneart", regneart);
   // localStorage.setItem("regnearten", "true");
   generateNumbers();
-  $(".star").remove();
+  reset();
 });
 
 $(".tall").click(function () {
@@ -169,7 +172,7 @@ $(".tall").click(function () {
   // localStorage.setItem("tall", this.innerText.slice(4));
   // localStorage.setItem("tallet", "true");
   generateNumbers();
-  $(".star").remove();
+  reset();
 });
 
 function generateNumbers() {
@@ -227,3 +230,10 @@ $(function () {
   numberPlace();
   resizeText();
 });
+
+function reset() {
+  $(".score").text("0 Poeng");
+  $(".flowersdiv").html("");
+  $(".star").remove();
+  score = 0;
+}
